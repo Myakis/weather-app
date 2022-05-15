@@ -1,4 +1,19 @@
-# Getting Started with Create React App
+# Weather App
+
+### Получение погоды на 5 дней вперед
+
+### Используемый Stack
+
+- React
+- Redux
+- TypeScript
+- axios
+- react-icons
+- redux-thunk
+- sass
+- react-apexcharts
+
+![Превьюшка](https://github.com/Myakis/weather-app/raw/master/preview.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -1,0 +1,30 @@
+.weather-card {
+  box-shadow: var(--boxShadow);
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  max-width: 150px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--gray);
+  transition: all 0.3s ease 0s;
+  @media (max-width: 600px) {
+    font-size: 10px;
+    gap: 0.2rem;
+  }
+  @media (max-width: 400px) {
+    flex-basis: 33%;
+  }
+  &__icon {
+    font-size: 25px;
+  }
+  &-active {
+    transform: scale(1.05);
+    background: var(--black);
+    color: var(--glass);
+  }
+}
