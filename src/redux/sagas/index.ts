@@ -6,9 +6,11 @@ import {
   select,
   put,
   call,
+  all,
 } from "redux-saga/effects";
 import { weatherApi } from "../../api/api";
 import { actions } from "../reducer/weather-reducer";
+import { watchGetWeather } from "./weather";
 
 // take исполняется один раз
 // takeEvery каждый раз при исполнении
@@ -20,30 +22,7 @@ import { actions } from "../reducer/weather-reducer";
 // spawn не останавливает работу saga при выпадении ошибки (неблокирующий)
 // select аналог useSelector
 
-export function* workerSaga({ city }: any) {
-  try {
-    yield put(actions.setPending(true));
-    yield put(actions.setError(false));
-    // @ts-ignore
-    const weather = yield call(weatherApi.getWeather, city);
-    yield put(actions.setWeather(weather));
-    yield put(actions.changeDay(0));
-  } catch (e) {
-    yield put(actions.setError(true));
-  } finally {
-    yield put(actions.setPending(false));
-  }
-}
-
-export function* watchClickSaga() {
-  // while (true) {
-  //   yield take("CLICK");
-  //   yield workerSaga();
-  // }
-
-  yield takeLeading("GET_WEATHER", workerSaga);
-}
 
 export default function* rootSaga() {
-  yield watchClickSaga();
+  yield all([watchGetWeather()]);
 }

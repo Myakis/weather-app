@@ -14,7 +14,7 @@ const ErrorLoad = () => {
           width='10px'
           height='10px'
           viewBox='0 0 10 10'
-          enable-background='new 0 0 10 10'
+          enableBackground='new 0 0 10 10'
           xmlSpace='preserve'
           style={{ opacity: 1, marginLeft: ' 0px', marginTop: ' 0px' }}>
           <g>
@@ -70,7 +70,7 @@ const ErrorLoad = () => {
           width='10px'
           height='10px'
           viewBox='0 0 10 10'
-          enable-background='new 0 0 10 10'
+          enableBackground='new 0 0 10 10'
           xmlSpace='preserve'>
           <path
             fill='none'

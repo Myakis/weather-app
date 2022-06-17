@@ -3,8 +3,6 @@ import { CgSearch } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { actions } from "../../redux/reducer/weather-reducer";
 //
-// import { getWeather } from '../../redux/reducer/weather-reducer';
-import { useAppDispatch } from "../../types/type";
 
 import "./Search.scss";
 const Search = () => {
@@ -27,7 +25,6 @@ const Search = () => {
           placeholder="Введите город"
           value={value}
           onChange={onHandlerChange}
-          onClick={() => dispatch({ type: "CLICK", payload: "fsaas" })}
         />
         <button>
           <CgSearch /> Поиск

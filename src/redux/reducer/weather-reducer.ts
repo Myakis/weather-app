@@ -1,7 +1,5 @@
-// import { getWeather } from "./weather-reducer";
-import { weatherApi } from "../../api/api";
 import { ResponseType } from "../../types/api";
-import { ActionsTypes, ThunkType } from "../../types/type";
+import { ActionsTypes } from "../../types/type";
 import { formattedData, ResultDaysType } from "../../Utils/formattedDate";
 
 let initialState = {
@@ -71,25 +69,9 @@ export const actions = {
     } as const),
   getWeather: (city: string) =>
     ({
-      type: "GET_WEATHER",
+      type: "GET_WEATHER-SAGA",
       city,
     } as const),
 };
-
-// export const getWeather =
-//   (city: string): ThunkType<ActionsTypes<typeof actions>> =>
-//   async dispatch => {
-//     try {
-//       dispatch(actions.setPending(true));
-//       dispatch(actions.setError(false));
-//       const weather = await weatherApi.getWeather(city);
-//       dispatch(actions.setWeather(weather));
-//       dispatch(actions.changeDay(0));
-//     } catch (e) {
-//       dispatch(actions.setError(true));
-//     } finally {
-//       dispatch(actions.setPending(false));
-//     }
-//   };
 
 export default weatherReducer;
