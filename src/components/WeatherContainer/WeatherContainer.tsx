@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getWeather } from '../../redux/reducer/weather-reducer';
+import { useDispatch } from 'react-redux';
+import { actions } from '../../redux/reducer/weather-reducer';
+// import { getWeather } from '../../redux/reducer/weather-reducer';
 import { useAppDispatch, useAppSelector } from '../../types/type';
 import ChartWeather from '../ChartWeather/ChartWeather';
 import ErrorLoad from '../common/ErrorLoad/ErrorLoad';
@@ -11,7 +13,7 @@ import WeatherMain from './WeatherMain/WeatherMain';
 
 const WeatherContainer = () => {
   const [selected, setSelected] = useState(0);
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch()
   const isPending = useAppSelector(state => state.weather.isPending);
   const days = useAppSelector(state => state.weather.days);
   const weatherCity = useAppSelector(state => state.weather.weather?.city);
@@ -19,7 +21,7 @@ const WeatherContainer = () => {
   const error = useAppSelector(state => state.weather.error);
 
   useEffect(() => {
-    dispatch(getWeather('new york'));
+    dispatch(actions.getWeather('new york'));
   }, []);
 
   useEffect(() => {

@@ -8,7 +8,6 @@ const ChartWeather = () => {
   const hours = useAppSelector(state => state.weather.weatherOnHours!.date).map(hour =>
     convertedLocalDate(hour, true),
   );
-  console.log(hours);
   const data: any = {
     series: [
       {
