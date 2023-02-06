@@ -74,7 +74,8 @@ export const getWeather =
     try {
       dispatch(actions.setPending(true));
       dispatch(actions.setError(false));
-      const weather = await weatherApi.getWeather(city);
+      const weather = await weatherApi.getWeather(city) as any
+      
       dispatch(actions.setWeather(weather));
       dispatch(actions.changeDay(0));
     } catch (e) {

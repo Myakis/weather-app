@@ -1,9 +1,11 @@
-export const convertedLocalDate = (data: string, hours = false) => {
+import moment from 'moment'
+import 'moment/locale/ru' // without this line it didn't work
+import 'moment-timezone'
+moment.locale('ru')
+
+export const convertedLocalDate = (data: string, hours = false, tz: number = 0) => {
   if (hours) {
-    return new Date(data).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return moment(data).tz(String(tz)).format('HH:mm')
   }
-  return new Date(data).toLocaleDateString('ru', {
-    month: 'short',
-    day: 'numeric',
-  });
-};
+  return moment(data).format('ddd, DD MMM ')
+}

@@ -1,14 +1,16 @@
-import React from 'react';
-import Chart from 'react-apexcharts';
-import { useAppSelector } from '../../types/type';
-import { convertedLocalDate } from '../../Utils/convertedLocalDate';
+import React from 'react'
+import Chart from 'react-apexcharts'
+import { useAppSelector } from '../../types/type'
+import { convertedLocalDate } from '../../Utils/convertedLocalDate'
 
 const ChartWeather = () => {
-  const weatherTemp = useAppSelector(state => state.weather.weatherOnHours!.temp);
-  const hours = useAppSelector(state => state.weather.weatherOnHours!.date).map(hour =>
-    convertedLocalDate(hour, true),
-  );
-  console.log(hours);
+  const weatherTemp = useAppSelector((state) => state.weather.weatherOnHours!.temp)
+  const timezone = useAppSelector((state) => state.weather.weather!.city?.timezone)
+
+  const hours = useAppSelector((state) => state.weather.weatherOnHours!.date).map((hour: string) =>
+    convertedLocalDate(hour, true, timezone)
+  )
+
   const data: any = {
     series: [
       {
@@ -79,23 +81,23 @@ const ChartWeather = () => {
       yaxis: {
         show: true,
         max: (weatherTemp: number) => {
-          return weatherTemp + 5;
+          return weatherTemp + 5
         },
         min: (weatherTemp: number) => {
-          return weatherTemp - 1;
+          return weatherTemp - 1
         },
         labels: {
           offsetX: -10,
         },
       },
     },
-  };
+  }
   return (
     <div className='ChartWeather'>
       <h3>Температура °C</h3>
       <Chart options={data.options} series={data.series} type='area' height={350} />
     </div>
-  );
-};
+  )
+}
 
-export default ChartWeather;
+export default ChartWeather
